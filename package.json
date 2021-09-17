@@ -1,0 +1,22 @@
+{
+  "name": "prueba-tecnica",
+  "version": "1.0.0",
+  "description": "Prueba técnica para candidatos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlesfores/prueba-tecnica.git"
+  },
+  "author": "Carles Forès Soto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlesfores/prueba-tecnica/issues"
+  },
+  "homepage": "https://github.com/carlesfores/prueba-tecnica#readme",
+  "dependencies": {
+    "phaser-ce": "^2.19.0"
+  }
+}
