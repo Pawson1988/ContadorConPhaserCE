@@ -4,9 +4,7 @@
   "description": "Prueba técnica para candidatos",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
-    "start": "webpack-dev-server --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,7 +17,9 @@
   },
   "homepage": "https://github.com/carlesfores/prueba-tecnica#readme",
   "dependencies": {
-    "phaser-ce": "^2.19.0"
+    "file-loader": "^6.2.0",
+    "phaser-ce": "^2.19.0",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
