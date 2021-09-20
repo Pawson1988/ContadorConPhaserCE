@@ -8,6 +8,8 @@ Queremos un contador básico:
 - Un botón de decrementar
 - Un recuadro donde ver el valor del contador
 
+![img](https://github.com/carlesfores/prueba-tecnica/blob/main/src/readmeAssets/Screenshot_20210920_130954.png)
+
 ## GUIA
 
 ### 1 - DESCARGATE LA PRUEBA Y PREPARA EL REPOSITORIO
@@ -52,6 +54,8 @@ El contador solo ha de permitir valores entre el 10 y el 0.
 
 - Si el contador llega a 10, pinta de rojo el valor del contador y bloquea el botón de incrementar (deshabilita el evento y pinta de color gris oscuro el fondo del botón)
 - Si el contador esta a 0, bloquea el botón de decrementar (deshabilita el evento y pinta de color gris oscuro el fondo del botón)
+
+![img](https://github.com/carlesfores/prueba-tecnica/blob/main/src/readmeAssets/Screenshot_20210920_131216.png)
 
 ### 7 - EJERCICIO 2
 
