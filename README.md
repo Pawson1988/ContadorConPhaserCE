@@ -1,48 +1,62 @@
 # PRUEBA TÉCNICA
 
-En esta prueba nos gustaria que creases un contador muy simple utilizando Phaser-ce (Edición de la comunidad de Phaser 2)
+En esta prueba nos gustaría que creases un contador muy simple utilizando Phaser-ce (Edición de la comunidad de Phaser 2)
 
 Queremos un contador básico:
 
-- Un boton de incrementar
-- Un boton de decremantar
-- Una cajita donde ver el valor del contador
-
-Realiza los puntos de la guia uno tras otro, hasta donde llegues! si no terminas todos los puntos no condicionara en absoluto
-nuestra opinión, todos tenemos vida fuera y es lo mas importante, tan solo queremos ver un poco como te desenvuelves.
+- Un botón de incrementar
+- Un botón de decrementar
+- Un recuadro donde ver el valor del contador
 
 ## GUIA
 
-### 1 - PREPARA EL REPOSITORIO DE CODIGO
+### 1 - DESCARGATE LA PRUEBA Y PREPARA EL REPOSITORIO
 
-La idea es que realizes la prueba técnica en un repositorio personal para compartirlo con nosotros.
-Utiliza el que mas te guste (GitHub, GitLab, Bitbucket...) 
+La idea es que realices la prueba técnica en un repositorio personal para compartirlo con nosotros,
+utiliza el que más te guste (GitHub, GitLab, Bitbucket...) 
 
-### 2 - DESCARGATE LA PRUEBA 
+Puedes descargarte el proyecto en ZIP o hacer un Fork.
 
-Puedes descargarte el proyecto en ZIP o hacer un Fork y subelo a tu repositorio
 
 ### 3 - ARRANCA EL PROYECTO
 
-Entra en la raíz del proyecto, instala las dependencias y a pasartelo bien!
+Entra en la raíz del proyecto, instala las dependencias con el comando
 
 ```
 npm install
+```
+
+Para arrancar el proyecto
+
+```
 npm run dev
 ```
 
 ### 4 - PINTAR EL CONTADOR
 
-Se creativo! utiliza solo graficos!
-Aquí puedes encontrar la documentación sobre los graficos en phaser-ce: https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html
+Se creativo y utiliza solo gráficos de Phaser
+
+Aquí puedes encontrar la documentación sobre los gráficos https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html
 y aquí un ejemplo: https://phaser.io/examples/v2/display/graphics
 
-Carga los assets del directorio src/assets en el estado 'preload' y añadelos en el estado 'create'.
-Aquí puedes ver un ejemplo: https://phaser.io/tutorials/making-your-first-phaser-2-game/part2
 
-### 5- AÑADIR EVENTOS
+### 5 - AÑADIR EVENTOS
 
-Añade los eventos en los graficos de incrementar/decrementar para actualizar el valor.
+Añade los eventos en los gráficos de incrementar/decrementar para actualizar el valor del contador.
 Aquí puedes ver un ejemplo: https://phaser.io/examples/v2/display/graphics-input-events
 
 
+### 6 - EJERCICIO 1
+
+El contador solo ha de permitir valores entre el 10 y el 0.
+
+- Si el contador llega a 10, pinta de rojo el valor del contador y bloquea el botón de incrementar (deshabilita el evento y pinta de color gris oscuro el fondo del botón)
+- Si el contador esta a 0, bloquea el botón de decrementar (deshabilita el evento y pinta de color gris oscuro el fondo del botón)
+
+### 7 - EJERCICIO 2
+
+En la carpeta assets hay una imagen 'assets/ufo.png' carga esta imagen en el juego y haz que se mueva cada vez que incremente o decremente el valor del contador.
+(Elige el movimiento que quieras, este ejercicio tan solo tiene la finalidad de ver que añades una imagen en el juego e interactuar con ella)
+
+Aquí tienes un ejemplo de animación
+https://phaser.io/examples/v2/tweens/tween-to
