@@ -18,7 +18,7 @@ const game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, "", {
 });
 
 function preload() {
-  game.load.image("ufo", "assets/ufo.png"); //para que descarga antes de la funcion create lanza
+  game.load.image("ufo", "assets/ufo.png"); //para que descarga antes de que la funcion create lanza
 }
 
 function create() {
@@ -60,31 +60,29 @@ function create() {
     game.world.centerY + 100
   );
 
-  drawShape1(BUTTON_BACKGROUND, BUTTON_STYLE);
-  drawShape2(BUTTON_BACKGROUND, BUTTON_STYLE);
+  drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
+  drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
 
   // ------------------------------- Up Button ---------------------------------------
 
   buttonUp.inputEnabled = true;
   buttonUp.input.usehandCursor = true;
-
   buttonUp.events.onInputDown.add(onButtonUp, this);
 
-  // Podria crear una funcion para evitar repitir code para los dos butones y mantenerlo DRY.
-  function drawShape1(fill, style) {
-    buttonUp.clear();
+  function drawShape(fill, style, button) {
+    button.clear();
 
-    buttonUp.beginFill(fill);
-    buttonUp.lineStyle(4, style, 1);
+    button.beginFill(fill);
+    button.lineStyle(4, style, 1);
 
-    buttonUp.moveTo(0, 0);
-    buttonUp.lineTo(250, 0);
-    buttonUp.lineTo(250, 100);
-    buttonUp.lineTo(125, 100);
-    buttonUp.lineTo(0, 100);
-    buttonUp.lineTo(0, 0);
+    button.moveTo(0, 0);
+    button.lineTo(250, 0);
+    button.lineTo(250, 100);
+    button.lineTo(125, 100);
+    button.lineTo(0, 100);
+    button.lineTo(0, 0);
 
-    buttonUp.endFill();
+    button.endFill();
   }
 
   buttonUp.addChild(textUp); //anadir al buton el texto
@@ -93,24 +91,7 @@ function create() {
 
   buttonDown.inputEnabled = true;
   buttonDown.input.usehandCursor = true;
-
   buttonDown.events.onInputDown.add(onButtonDown, this);
-
-  function drawShape2(fill, style) {
-    buttonDown.clear();
-
-    buttonDown.beginFill(fill);
-    buttonDown.lineStyle(4, style, 1);
-    buttonDown.moveTo(0, 0);
-    buttonDown.lineTo(250, 0);
-    buttonDown.lineTo(250, 100);
-    buttonDown.lineTo(125, 100);
-    buttonDown.lineTo(0, 100);
-    buttonDown.lineTo(0, 0);
-
-    buttonDown.endFill();
-  }
-
   buttonDown.addChild(textDown);
 
   // ------------------------------ functions for button press ---------------------------------
@@ -130,7 +111,7 @@ function create() {
     if (score < 1) {
       buttonDown.inputEnabled = false;
       buttonUp.inputEnabled = false; // para deshabiliatr los dos butones
-      drawShape2(BUTTON_DISABLE, BUTTON_BACKGROUND); // para pintar buttonDown en gris
+      drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown); // para pintar buttonDown en gris
     }
   }
 
@@ -145,7 +126,7 @@ function create() {
     if (score > 9) {
       // para cuando el score llega a ser 10.
       text.fill = "red";
-      drawShape1(BUTTON_DISABLE, BUTTON_BACKGROUND);
+      drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonUp);
       buttonUp.inputEnabled = false;
       buttonDown.inputEnabled = false;
     }
