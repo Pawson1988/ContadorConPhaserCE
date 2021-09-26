@@ -120,7 +120,8 @@ function create() {
       // para que no puede llegar a menos 1 en el contador
       score--; // para decrementar el variable.
       text.setText(`score: ${score}`); // para actualizar en la pagina
-      spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
+      // spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
+      game.add.tween(spaceShip).to( { x: '-50' }, 350, Phaser.Easing.Linear.None, true);
       game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
     }
 
@@ -134,7 +135,8 @@ function create() {
   function onButtonUp() {
     score++;
     text.setText(`score: ${score}`);
-    spaceShip.x += 50;
+    // spaceShip.x += 50;
+    game.add.tween(spaceShip).to( { x: '+50' }, 350, Phaser.Easing.Linear.None, true);
     game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
     if (score > 9) {
       // para cuando el score llega a ser 10.
