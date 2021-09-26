@@ -122,7 +122,7 @@ function create() {
       spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
     }
 
-    if (score < 1) { // para cuando el score llega a ser 10. 
+    if (score < 1) {
       buttonDown.inputEnabled = false;
       buttonUp.inputEnabled = false; // para deshabiiatr los dos butones
       drawShape2(BUTTON_DISABLE, BUTTON_BACKGROUND); // para pintar buttonDown en gris
@@ -133,7 +133,7 @@ function create() {
     score++;
     text.setText(`score: ${score}`);
     spaceShip.x += 50;
-    if (score > 9) {
+    if (score > 9) {  // para cuando el score llega a ser 10. 
       text.fill = "red";
       drawShape1(BUTTON_DISABLE, BUTTON_BACKGROUND);
       buttonUp.inputEnabled = false;
