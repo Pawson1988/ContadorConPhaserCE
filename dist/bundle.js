@@ -11099,11 +11099,11 @@ const game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, "", {
 });
 
 function preload() {
-  game.load.spritesheet("ufo", "/assets/ufo.png"); //para que descarga antes de la funcion create lanaza
+  game.load.image("ufo", "assets/ufo.png"); //para que descarga antes de la funcion create lanza
 }
 
 function create() {
-  let spaceShip = game.add.sprite(150, 150, "ufo"); // anadir el spaceshp el game object
+  let spaceShip = game.add.image(150, 150, "ufo"); // anadir el spaceshp el game object
 
   let text = game.add.text(game.world.centerX, game.world.centerY, `score: ${score}`, {
     font: TEXT_FONT,
@@ -11140,7 +11140,7 @@ function create() {
 
   buttonUp.events.onInputDown.add(onButtonUp, this);
 
-  // Podria crear una funcion para evitar repitir code para los dos butones y mantenerlo DRY. 
+  // Podria crear una funcion para evitar repitir code para los dos butones y mantenerlo DRY.
   function drawShape1(fill, style) {
     buttonUp.clear();
 
@@ -11157,7 +11157,7 @@ function create() {
     buttonUp.endFill();
   }
 
-  buttonUp.addChild(textUp); //anadir al buton el texto 
+  buttonUp.addChild(textUp); //anadir al buton el texto
 
   // ----------------------- Down Button ---------------------------------------------
 
@@ -11188,16 +11188,16 @@ function create() {
   function onButtonDown() {
     if (score >= 1) {
       // para que no puede llegar a menos 1 en el contador
-      score--; // para decrementar el variable. 
-      text.setText(`score: ${score}`); // para atualizar en la pagina
+      score--; // para decrementar el variable.
+      text.setText(`score: ${score}`); // para actualizar en la pagina
       spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
     }
 
     if (score < 1) {
-      // para cuando el score llega a ser 10. 
       buttonDown.inputEnabled = false;
-      buttonUp.inputEnabled = false; // para deshabiiatr los dos butones
+      buttonUp.inputEnabled = false; // para deshabiliatr los dos butones
       drawShape2(BUTTON_DISABLE, BUTTON_BACKGROUND); // para pintar buttonDown en gris
+      game.stage.backgroundColor = "#de6c64";
     }
   }
 
@@ -11206,6 +11206,7 @@ function create() {
     text.setText(`score: ${score}`);
     spaceShip.x += 50;
     if (score > 9) {
+      // para cuando el score llega a ser 10.
       text.fill = "red";
       drawShape1(BUTTON_DISABLE, BUTTON_BACKGROUND);
       buttonUp.inputEnabled = false;
