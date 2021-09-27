@@ -66,7 +66,7 @@ function create() {
   // ------------------------------- Up Button ---------------------------------------
 
   buttonUp.inputEnabled = true;
-  buttonUp.input.usehandCursor = true;
+  buttonUp.input.useHandCursor = true;
   buttonUp.events.onInputDown.add(onButtonUp, this);
 
   function drawShape(fill, style, button) {
@@ -90,32 +90,34 @@ function create() {
   // ----------------------- Down Button ---------------------------------------------
 
   buttonDown.inputEnabled = true;
-  buttonDown.input.usehandCursor = true;
+  buttonDown.input.useHandCursor = true;
   buttonDown.events.onInputDown.add(onButtonDown, this);
   buttonDown.addChild(textDown);
 
   // ------------------------------ functions for button press ---------------------------------
 
   function onButtonDown() {
-    if (score >= 1) {
-      // para que no puede llegar a menos 1 en el contador
-      score--; // para decrementar el variable.
-      text.setText(`score: ${score}`); // para actualizar en la pagina
-      // spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
-      game.add
-        .tween(spaceShip)
-        .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
-      game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
-    }
-
+     buttonUp.inputEnabled = true;
+     buttonUp.input.useHandCursor = true;
+    drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
+    // para que no puede llegar a menos 1 en el contador
+    score--; // para decrementar el variable.
+    text.setText(`score: ${score}`); // para actualizar en la pagina
+    // spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
+    game.add
+      .tween(spaceShip)
+      .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
+    game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
     if (score < 1) {
       buttonDown.inputEnabled = false;
-      buttonUp.inputEnabled = false; // para deshabiliatr los dos butones
       drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown); // para pintar buttonDown en gris
     }
   }
 
   function onButtonUp() {
+    buttonDown.inputEnabled = true;
+    buttonDown.input.useHandCursor = true;
+    drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
     score++;
     text.setText(`score: ${score}`);
     // spaceShip.x += 50;
@@ -128,7 +130,6 @@ function create() {
       text.fill = "red";
       drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonUp);
       buttonUp.inputEnabled = false;
-      buttonDown.inputEnabled = false;
     }
   }
 }
