@@ -97,6 +97,7 @@ function create() {
   // ------------------------------ functions for button press ---------------------------------
 
   function onButtonDown() {
+    text.fill = TEXT_COLOR;
      buttonUp.inputEnabled = true;
      buttonUp.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
