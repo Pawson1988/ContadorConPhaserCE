@@ -64,8 +64,6 @@ function create() {
   let texts = [textUp, textDown];
   let scoreFunctions = [onButtonUp, onButtonDown];
 
-  
-
   activateButtonInputs();
   drawButtons();
 
@@ -77,7 +75,7 @@ function create() {
     buttonUp.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
     score--;
-    text.setText(`score: ${score}`);
+    text.setText(`Score: ${score}`);
     game.add
       .tween(spaceShip)
       .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
@@ -93,7 +91,7 @@ function create() {
     buttonDown.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
     score++;
-    text.setText(`score: ${score}`);
+    text.setText(`Score: ${score}`);
     game.add
       .tween(spaceShip)
       .to({ x: "+50" }, 350, Phaser.Easing.Linear.None, true);
@@ -120,7 +118,7 @@ function create() {
 
     button.endFill();
   }
-  
+
   function drawButtons() {
     for (let i = 0; i < buttons.length; i++) {
       drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttons[i]);
@@ -135,7 +133,6 @@ function create() {
       buttons[i].events.onInputDown.add(scoreFunctions[i], this);
     }
   }
-  
 }
 
 function update() {}
