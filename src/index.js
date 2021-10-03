@@ -60,8 +60,15 @@ function create() {
     game.world.centerY + 100
   );
 
-  drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
-  drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
+  let buttons = [buttonUp, buttonDown];
+
+  function drawButtons(){
+    for(let i = 0; i < buttons.length; i++){
+      drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttons[i]);
+    }
+  };
+
+  drawButtons();
 
   // ------------------------------- Up Button ---------------------------------------
 
