@@ -61,34 +61,15 @@ function create() {
   );
 
   let buttons = [buttonUp, buttonDown];
+  let texts = [textUp, textDown];
+  let scoreFunctions = [onButtonUp, onButtonDown];
 
-  function drawButtons() {
-    for (let i = 0; i < buttons.length; i++) {
-      drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttons[i]);
-    }
-  }
-
-  function activateButtonInputs() {
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].inputEnabled = true;
-      buttons[i].input.useHandCursor = true;
-    }
-  }
+  
 
   activateButtonInputs();
   drawButtons();
 
-  // ------------------------------- Up Button ---------------------------------------
-
-  buttonUp.events.onInputDown.add(onButtonUp, this);
-  buttonUp.addChild(textUp);
-
-  // ----------------------- Down Button ---------------------------------------------
-
-  buttonDown.events.onInputDown.add(onButtonDown, this);
-  buttonDown.addChild(textDown);
-
-  // ------------------------------ functions for button press ---------------------------------
+  // ------------------------------ functions ---------------------------------------------------
 
   function onButtonDown() {
     text.fill = TEXT_COLOR;
@@ -139,6 +120,22 @@ function create() {
 
     button.endFill();
   }
+  
+  function drawButtons() {
+    for (let i = 0; i < buttons.length; i++) {
+      drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttons[i]);
+    }
+  }
+
+  function activateButtonInputs() {
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].inputEnabled = true;
+      buttons[i].input.useHandCursor = true;
+      buttons[i].addChild(texts[i]);
+      buttons[i].events.onInputDown.add(scoreFunctions[i], this);
+    }
+  }
+  
 }
 
 function update() {}
