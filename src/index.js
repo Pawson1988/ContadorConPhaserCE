@@ -120,8 +120,8 @@ function create() {
   }
 
   function drawButtons() {
-    for (let i = 0; i < buttons.length; i++) {
-      drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttons[i]);
+    for (let button of buttons) {
+      drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, button);
     }
   }
 
