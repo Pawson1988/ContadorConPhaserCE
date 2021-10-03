@@ -18,11 +18,11 @@ const game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, "", {
 });
 
 function preload() {
-  game.load.image("ufo", "assets/ufo.png"); 
+  game.load.image("ufo", "assets/ufo.png");
 }
 
 function create() {
-  let spaceShip = game.add.image(150, 150, "ufo"); 
+  let spaceShip = game.add.image(150, 150, "ufo");
 
   let text = game.add.text(
     game.world.centerX,
@@ -62,42 +62,29 @@ function create() {
 
   let buttons = [buttonUp, buttonDown];
 
-  function drawButtons(){
-    for(let i = 0; i < buttons.length; i++){
+  function drawButtons() {
+    for (let i = 0; i < buttons.length; i++) {
       drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttons[i]);
     }
-  };
+  }
 
+  function activateButtonInputs() {
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].inputEnabled = true;
+      buttons[i].input.useHandCursor = true;
+    }
+  }
+
+  activateButtonInputs();
   drawButtons();
 
   // ------------------------------- Up Button ---------------------------------------
 
-  buttonUp.inputEnabled = true;
-  buttonUp.input.useHandCursor = true;
   buttonUp.events.onInputDown.add(onButtonUp, this);
-
-  function drawShape(fill, style, button) {
-    button.clear();
-
-    button.beginFill(fill);
-    button.lineStyle(4, style, 1);
-
-    button.moveTo(0, 0);
-    button.lineTo(250, 0);
-    button.lineTo(250, 100);
-    button.lineTo(125, 100);
-    button.lineTo(0, 100);
-    button.lineTo(0, 0);
-
-    button.endFill();
-  }
-
-  buttonUp.addChild(textUp); //anadir al buton el texto
+  buttonUp.addChild(textUp);
 
   // ----------------------- Down Button ---------------------------------------------
 
-  buttonDown.inputEnabled = true;
-  buttonDown.input.useHandCursor = true;
   buttonDown.events.onInputDown.add(onButtonDown, this);
   buttonDown.addChild(textDown);
 
@@ -105,18 +92,18 @@ function create() {
 
   function onButtonDown() {
     text.fill = TEXT_COLOR;
-     buttonUp.inputEnabled = true;
-     buttonUp.input.useHandCursor = true;
+    buttonUp.inputEnabled = true;
+    buttonUp.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
-    score--; 
-    text.setText(`score: ${score}`); 
+    score--;
+    text.setText(`score: ${score}`);
     game.add
       .tween(spaceShip)
       .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
     game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
     if (score < 1) {
       buttonDown.inputEnabled = false;
-      drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown); 
+      drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown);
     }
   }
 
@@ -135,6 +122,22 @@ function create() {
       drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonUp);
       buttonUp.inputEnabled = false;
     }
+  }
+
+  function drawShape(fill, style, button) {
+    button.clear();
+
+    button.beginFill(fill);
+    button.lineStyle(4, style, 1);
+
+    button.moveTo(0, 0);
+    button.lineTo(250, 0);
+    button.lineTo(250, 100);
+    button.lineTo(125, 100);
+    button.lineTo(0, 100);
+    button.lineTo(0, 0);
+
+    button.endFill();
   }
 }
 
