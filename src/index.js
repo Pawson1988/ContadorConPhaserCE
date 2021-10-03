@@ -140,18 +140,15 @@ function create() {
     return game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
   }
 
-  function setScoreText(){
-    return text.setText(`Score: ${score}`);
-  }
 
   function incrementScore(){
     score++;
-    setScoreText();
+    text.setText(`Score: ${score}`);
   }
 
   function decrementScore(){
     score--;
-    setScoreText();
+    text.setText(`Score: ${score}`);
   }
 
 }
