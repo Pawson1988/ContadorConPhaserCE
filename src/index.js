@@ -22,12 +22,16 @@ function preload() {
 }
 
 function create() {
+
+  // ----------------------------- Add image to game object ----------------------------------
   let spaceShip = game.add.image(150, 150, "ufo");
+
+  // ----------------------------- Add text to game object -----------------------------------
 
   let text = game.add.text(
     game.world.centerX,
     game.world.centerY,
-    `score: ${score}`,
+    `Score: ${score}`,
     {
       font: TEXT_FONT,
       fill: TEXT_COLOR,
@@ -74,12 +78,12 @@ function create() {
     buttonUp.inputEnabled = true;
     buttonUp.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
-    score--;
-    text.setText(`Score: ${score}`);
+    decrementScore();
+    setScoreText();
     game.add
       .tween(spaceShip)
       .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
-    game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
+    randomBackgroundColor();
     if (score < 1) {
       buttonDown.inputEnabled = false;
       drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown);
@@ -90,12 +94,12 @@ function create() {
     buttonDown.inputEnabled = true;
     buttonDown.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
-    score++;
-    text.setText(`Score: ${score}`);
+    incrementScore();
+    setScoreText();
     game.add
       .tween(spaceShip)
       .to({ x: "+50" }, 350, Phaser.Easing.Linear.None, true);
-    game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
+    randomBackgroundColor();
     if (score > 9) {
       text.fill = "red";
       drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonUp);
@@ -132,6 +136,22 @@ function create() {
       buttons[i].addChild(texts[i]);
       buttons[i].events.onInputDown.add(scoreFunctions[i], this);
     }
+  }
+
+  function randomBackgroundColor(){
+    return game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
+  }
+
+  function setScoreText(){
+    return text.setText(`Score: ${score}`);
+  }
+
+  function incrementScore(){
+    score++;
+  }
+
+  function decrementScore(){
+    score--;
   }
 }
 
