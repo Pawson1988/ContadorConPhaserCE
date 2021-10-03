@@ -18,11 +18,11 @@ const game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, "", {
 });
 
 function preload() {
-  game.load.image("ufo", "assets/ufo.png"); //para que descarga antes de que la funcion create lanza
+  game.load.image("ufo", "assets/ufo.png"); 
 }
 
 function create() {
-  let spaceShip = game.add.image(150, 150, "ufo"); // anadir el spaceshp el game object
+  let spaceShip = game.add.image(150, 150, "ufo"); 
 
   let text = game.add.text(
     game.world.centerX,
@@ -34,7 +34,7 @@ function create() {
       align: TEXT_ALIGNMENT,
     }
   );
-  // para anadir texto el game object.
+
   let textUp = game.add.text(90, 28, "UP", {
     font: TEXT_FONT_BTN,
     fill: TEXT_COLOR,
@@ -101,17 +101,15 @@ function create() {
      buttonUp.inputEnabled = true;
      buttonUp.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
-    // para que no puede llegar a menos 1 en el contador
-    score--; // para decrementar el variable.
-    text.setText(`score: ${score}`); // para actualizar en la pagina
-    // spaceShip.x -= 50; //para desplazar el spaceship a la izquierda
+    score--; 
+    text.setText(`score: ${score}`); 
     game.add
       .tween(spaceShip)
       .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
     game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
     if (score < 1) {
       buttonDown.inputEnabled = false;
-      drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown); // para pintar buttonDown en gris
+      drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonDown); 
     }
   }
 
@@ -121,13 +119,11 @@ function create() {
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
     score++;
     text.setText(`score: ${score}`);
-    // spaceShip.x += 50;
     game.add
       .tween(spaceShip)
       .to({ x: "+50" }, 350, Phaser.Easing.Linear.None, true);
     game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
     if (score > 9) {
-      // para cuando el score llega a ser 10.
       text.fill = "red";
       drawShape(BUTTON_DISABLE, BUTTON_BACKGROUND, buttonUp);
       buttonUp.inputEnabled = false;
