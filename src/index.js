@@ -79,7 +79,6 @@ function create() {
     buttonUp.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonUp);
     decrementScore();
-    setScoreText();
     game.add
       .tween(spaceShip)
       .to({ x: "-50" }, 350, Phaser.Easing.Linear.None, true);
@@ -95,7 +94,6 @@ function create() {
     buttonDown.input.useHandCursor = true;
     drawShape(BUTTON_BACKGROUND, BUTTON_STYLE, buttonDown);
     incrementScore();
-    setScoreText();
     game.add
       .tween(spaceShip)
       .to({ x: "+50" }, 350, Phaser.Easing.Linear.None, true);
@@ -148,11 +146,14 @@ function create() {
 
   function incrementScore(){
     score++;
+    setScoreText();
   }
 
   function decrementScore(){
     score--;
+    setScoreText();
   }
+
 }
 
 function update() {}
