@@ -18,13 +18,13 @@ const game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, "", {
 });
 
 function preload() {
-  game.load.image("ufo", "assets/ufo.png");
+  game.load.image("ufo", "./src/assets/ufo.png");
 }
 
 function create() {
 
   // ----------------------------- Add image to game object ----------------------------------
-  let spaceShip = game.add.image(150, 150, "ufo");
+  let spaceShip = game.add.sprite(150, 150, "ufo");
 
   // ----------------------------- Add text to game object -----------------------------------
 
